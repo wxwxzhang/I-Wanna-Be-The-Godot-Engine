@@ -73,7 +73,7 @@ func _set_anim(anim):
 		$Anim.play(anim)
 func _shoot():
 	if $Bullets.get_child_count() < 4:
-		var bullet = preload("res://objects/bullet.tscn").instance()
+		var bullet = preload("res://objects/player/bullet.tscn").instance()
 		bullet.position = position
 		bullet.dir = $Sprite.scale.x
 		$Bullets.add_child(bullet)

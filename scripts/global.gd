@@ -24,7 +24,6 @@ func _ready():
 
 	pass
 func _process(delta):
-	print(is_player_exists())
 	##### Game check #####
 	if game_started:
 		time += 1
