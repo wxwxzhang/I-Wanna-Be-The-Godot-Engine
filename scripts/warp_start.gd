@@ -9,7 +9,11 @@ func _ready():
 
 func _on_WarpStart_body_entered(body):
 	if body is preload("res://scripts/player.gd"):
-		get_tree().change_scene(global.start_scene)
-		global.difficulty = dif
-		global.game_started = true
-		global.auto_save = true
+		if dif == 4:
+			global.load_game(true)
+		else:
+			global.game_started = true
+			global.auto_save = true
+			global.difficulty = dif
+			
+			get_tree().change_scene(global.start_scene)

@@ -21,6 +21,8 @@ var auto_save = false
 var scene_last = null
 signal scene_start
 
+var is_need_reset_position = false
+
 const DATA_PATH = "user://Data//";
 const SAVE_FILE_NAME = "user://Data//save";
 
@@ -56,21 +58,39 @@ func get_player():
 		return null
 	return node
 func save_game(save_position):
-	var dict = {}
 	if save_position:
-		save_scene = get_tree().current_scene
+		save_scene = get_tree().current_scene.filename
 		save_player = get_player().position
-		dict["player"] = save_player
+	var dict = {}
 	dict["death"] = death
 	dict["time"] = time
 	dict["difficulty"] = difficulty
-	dict["scene"] = get_tree().current_scene
-	dict["game_clear"] = save_game_clear
+	dict["save_scene"] = save_scene
+	dict["save_player"] = save_player
+	dict["save_game_clear"] = save_game_clear
 	var f = File.new()
 	f.open_encrypted_with_pass(SAVE_FILE_NAME + str(savenum), File.WRITE, save_password)
 	f.store_var(dict)
 	f.close()
-	
+func load_game(load_file):
+	if load_file:
+		var f = File.new()
+		var err = f.open_encrypted_with_pass(SAVE_FILE_NAME + str(savenum), File.READ, save_password)
+		if err != ERR_FILE_CORRUPT:
+			var dict = f.get_var()
+			death = dict["death"]
+			time = dict["time"]
+			difficulty = dict["difficulty"]
+			save_scene = dict["save_scene"]
+			save_player = dict["save_player"]
+			save_game_clear = dict["save_game_clear"]
+			f.close()
+		else:
+			save_scene = "res://levels/init/difficulty_select.tscn"
+	game_started = true
+	auto_save = false
+	is_need_reset_position = true
+	get_tree().change_scene(save_scene)
 func _on_scene_start():
 	if auto_save:
 		save_game(true)

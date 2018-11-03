@@ -27,12 +27,18 @@ func _ready():
 			death[i] = 0
 			time[i] = 0
 		else:
-			f.open_encrypted_with_pass(SAVE_FILE_NAME + str(i), File.READ, global.save_password)
-			var dict = f.get_var()
-			difficulty[i] = dict["difficulty"]
-			death[i] = dict["death"]
-			time[i] = dict["time"]
-			f.close()
+			var err = f.open_encrypted_with_pass(SAVE_FILE_NAME + str(i), File.READ, global.save_password)
+			if err != ERR_FILE_CORRUPT:
+				var dict = f.get_var()
+				difficulty[i] = dict["difficulty"]
+				death[i] = dict["death"]
+				time[i] = dict["time"]
+				f.close()
+			else:
+				exists[i] = false
+				difficulty[i] = 0
+				death[i] = 0
+				time[i] = 0
 		##### Update labels #####
 		var lbl = get_node("Labels/Difficulty/Difficulty" + str(i))
 		if !exists[i]:

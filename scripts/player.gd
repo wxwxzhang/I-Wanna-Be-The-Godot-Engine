@@ -13,6 +13,9 @@ var max_vspeed = 9
 var hspeed = 0
 var vspeed = 0
 
+func _ready():
+	if global.is_need_reset_position:
+		position = global.save_player
 func _physics_process(delta):
 	var L = Input.is_action_pressed('ui_left')
 	var R = Input.is_action_pressed('ui_right')
