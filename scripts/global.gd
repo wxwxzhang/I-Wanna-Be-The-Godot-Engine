@@ -40,11 +40,13 @@ func _process(delta):
 		time += 1
 		_update_title()
 		if Input.is_action_just_pressed("ui_restart"):
-			get_tree().change_scene(save_scene)
+			load_game(false)
 	
 	##### Function keys #####
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
+	if Input.is_action_just_pressed("ui_f2"):
+		game_restart()
 func _update_title():
 	OS.set_window_title(room_caption_def + 
 			 " -" + 
@@ -92,6 +94,16 @@ func load_game(load_file):
 	is_need_reset_position = true
 	get_tree().change_scene(save_scene)
 func _on_scene_start():
-	if auto_save:
-		save_game(true)
-		auto_save = false
+	pass
+func game_restart():
+	get_tree().change_scene("res://levels/init/title.tscn")
+	# Initialize
+	game_started = false
+	OS.set_window_title(room_caption_def)
+	savenum = 1
+	death = 0
+	time = 0
+	difficulty = 0
+	save_scene = ""
+	save_player = Vector2()
+	save_game_clear = false

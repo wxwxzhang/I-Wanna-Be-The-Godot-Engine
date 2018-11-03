@@ -10,7 +10,11 @@ func _ready():
 func _on_WarpStart_body_entered(body):
 	if body is preload("res://scripts/player.gd"):
 		if dif == 4:
-			global.load_game(true)
+			var f = File.new()
+			if f.file_exists(global.SAVE_FILE_NAME + str(global.savenum)):
+				global.load_game(true)
+			else:
+				get_tree().reload_current_scene()
 		else:
 			global.game_started = true
 			global.auto_save = true

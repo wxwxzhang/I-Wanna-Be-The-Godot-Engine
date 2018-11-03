@@ -47,11 +47,11 @@ func _ready():
 			match difficulty[i]:
 				global.DIF_MEDIUM:
 					lbl.text = "Medium"
-				global.DIF_MEDIUM:
+				global.DIF_HARD:
 					lbl.text = "Hard"
-				global.DIF_MEDIUM:
+				global.DIF_VERYHARD:
 					lbl.text = "Very Hard"
-				global.DIF_MEDIUM:
+				global.DIF_IMPOSSIBLE:
 					lbl.text = "Impossible"
 					
 		lbl = get_node("Labels/Deaths/Deaths" + str(i))
