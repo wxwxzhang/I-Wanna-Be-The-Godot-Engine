@@ -1,0 +1,680 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scripts/difficulty_menu.gd" type="Script" id=1]
+[ext_resource path="res://tiles/all_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://tiles/megaman.tres" type="TileSet" id=3]
+[ext_resource path="res://fonts/arialbd.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sprites/cherry.png" type="Texture" id=5]
+[ext_resource path="res://sprites/player_idle.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 44
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+
+size = 17
+outline_size = 0
+outline_color = Color( 1, 1, 1, 1 )
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "anim"
+length = 0.6
+loop = true
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000562429, 0.301381 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "anim"
+length = 0.6
+loop = true
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000562429, 0.301381 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "anim"
+length = 0.6
+loop = true
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000562429, 0.301381 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "anim"
+length = 0.6
+loop = true
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000562429, 0.301381 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=7]
+
+resource_name = "anim"
+length = 0.6
+loop = true
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000562429, 0.301381 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=8]
+
+resource_name = "anim"
+length = 0.6
+loop = true
+step = 0.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.000562429, 0.301381 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=9]
+
+length = 0.5
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.126369, 0.249833, 0.374844 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 800.0
+margin_bottom = 608.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.501961, 1, 1, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tilemaps" type="Node2D" parent="."]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap" type="TileMap" parent="Tilemaps"]
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 0, 11, 1, 0, 12, 1, 0, 13, 1, 0, 14, 1, 0, 15, 1, 0, 16, 1, 0, 17, 1, 0, 18, 1, 0, 19, 1, 0, 20, 1, 0, 21, 1, 0, 22, 1, 0, 23, 1, 0, 24, 1, 0, 65536, 1, 0, 65560, 1, 0, 131072, 1, 0, 131096, 1, 0, 196608, 1, 0, 196632, 1, 0, 262144, 1, 0, 262146, 13, 0, 262147, 12, 0, 262148, 12, 0, 262149, 12, 0, 262150, 12, 0, 262151, 13, 0, 262161, 13, 0, 262162, 12, 0, 262163, 12, 0, 262164, 12, 0, 262165, 12, 0, 262166, 13, 0, 262168, 1, 0, 327680, 1, 0, 327682, 9, 0, 327687, 9, 0, 327697, 9, 0, 327702, 9, 0, 327704, 1, 0, 393216, 1, 0, 393218, 9, 0, 393223, 9, 0, 393233, 9, 0, 393238, 9, 0, 393240, 1, 0, 458752, 1, 0, 458754, 9, 0, 458759, 9, 0, 458769, 9, 0, 458774, 9, 0, 458776, 1, 0, 524288, 1, 0, 524290, 9, 0, 524295, 9, 0, 524305, 9, 0, 524310, 9, 0, 524312, 1, 0, 589824, 1, 0, 589826, 9, 0, 589831, 9, 0, 589841, 9, 0, 589846, 9, 0, 589848, 1, 0, 655360, 1, 0, 655362, 9, 0, 655367, 9, 0, 655377, 9, 0, 655382, 9, 0, 655384, 1, 0, 720896, 1, 0, 720898, 9, 0, 720903, 9, 0, 720913, 9, 0, 720918, 9, 0, 720920, 1, 0, 786432, 1, 0, 786434, 9, 0, 786439, 9, 0, 786449, 9, 0, 786454, 9, 0, 786456, 1, 0, 851968, 1, 0, 851970, 13, 0, 851971, 12, 0, 851972, 12, 0, 851973, 12, 0, 851974, 12, 0, 851975, 13, 0, 851985, 13, 0, 851986, 12, 0, 851987, 12, 0, 851988, 12, 0, 851989, 12, 0, 851990, 13, 0, 851992, 1, 0, 917504, 1, 0, 917528, 1, 0, 983040, 1, 0, 983064, 1, 0, 1048576, 1, 0, 1048600, 1, 0, 1114112, 1, 0, 1114136, 1, 0, 1179648, 1, 0, 1179649, 0, 0, 1179650, 0, 0, 1179651, 0, 0, 1179652, 0, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 0, 0, 1179658, 0, 0, 1179659, 0, 0, 1179660, 0, 0, 1179661, 0, 0, 1179662, 0, 0, 1179663, 0, 0, 1179664, 0, 0, 1179665, 0, 0, 1179666, 0, 0, 1179667, 0, 0, 1179668, 0, 0, 1179669, 0, 0, 1179670, 0, 0, 1179671, 0, 0, 1179672, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap2" type="TileMap" parent="Tilemaps"]
+position = Vector2( 16, 0 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 262153, 13, 0, 262154, 12, 0, 262155, 12, 0, 262156, 12, 0, 262157, 12, 0, 262158, 13, 0, 327689, 9, 0, 327694, 9, 0, 393225, 9, 0, 393230, 9, 0, 458761, 9, 0, 458766, 9, 0, 524297, 9, 0, 524302, 9, 0, 589833, 9, 0, 589838, 9, 0, 655369, 9, 0, 655374, 9, 0, 720905, 9, 0, 720910, 9, 0, 786441, 9, 0, 786446, 9, 0, 851977, 13, 0, 851978, 12, 0, 851979, 12, 0, 851980, 12, 0, 851981, 12, 0, 851982, 13, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TileMap3" type="TileMap" parent="Tilemaps"]
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 655366, 0, 0, 655381, 0, 0, 655396, 0, 0, 1179654, 0, 0, 1179669, 0, 0, 1179684, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Labels" type="Node2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Save" type="Node2D" parent="Labels"]
+editor/display_folded = true
+
+[node name="Save1" type="Label" parent="Labels/Save"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 96.0
+margin_top = 160.0
+margin_right = 226.0
+margin_bottom = 211.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Save1"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Save2" type="Label" parent="Labels/Save"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 336.0
+margin_top = 160.0
+margin_right = 466.0
+margin_bottom = 211.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Save2"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Save3" type="Label" parent="Labels/Save"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 576.0
+margin_top = 160.0
+margin_right = 706.0
+margin_bottom = 211.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Save3"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Difficulty" type="Node2D" parent="Labels"]
+
+[node name="Difficulty1" type="Label" parent="Labels/Difficulty"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 216.0
+margin_right = 189.0
+margin_bottom = 257.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "No Data
+"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Difficulty2" type="Label" parent="Labels/Difficulty"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 368.0
+margin_top = 216.0
+margin_right = 429.0
+margin_bottom = 257.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "No Data
+"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Difficulty3" type="Label" parent="Labels/Difficulty"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 608.0
+margin_top = 216.0
+margin_right = 669.0
+margin_bottom = 257.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "No Data
+"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Deaths" type="Node2D" parent="Labels"]
+editor/display_folded = true
+
+[node name="Deaths1" type="Label" parent="Labels/Deaths"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 240.0
+margin_right = 167.0
+margin_bottom = 283.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Deaths:
+"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Deaths2" type="Label" parent="Labels/Deaths"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 344.0
+margin_top = 240.0
+margin_right = 407.0
+margin_bottom = 283.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Deaths:
+"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Deaths3" type="Label" parent="Labels/Deaths"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 584.0
+margin_top = 240.0
+margin_right = 647.0
+margin_bottom = 283.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Deaths:
+"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Time" type="Node2D" parent="Labels"]
+editor/display_folded = true
+
+[node name="Time1" type="Label" parent="Labels/Time"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 104.0
+margin_top = 264.0
+margin_right = 167.0
+margin_bottom = 307.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Time:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Time2" type="Label" parent="Labels/Time"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 344.0
+margin_top = 264.0
+margin_right = 407.0
+margin_bottom = 307.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Time:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Time3" type="Label" parent="Labels/Time"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 584.0
+margin_top = 264.0
+margin_right = 647.0
+margin_bottom = 307.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Time:"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Sprites" type="Node2D" parent="."]
+editor/display_folded = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cherry1" type="Sprite" parent="Sprites"]
+position = Vector2( 144, 472 )
+texture = ExtResource( 5 )
+hframes = 2
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry1"]
+root_node = NodePath("..")
+autoplay = "anim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/anim = SubResource( 3 )
+blend_times = [  ]
+
+[node name="Cherry6" type="Sprite" parent="Sprites"]
+position = Vector2( 220, 472 )
+texture = ExtResource( 5 )
+hframes = 2
+frame = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry6"]
+root_node = NodePath("..")
+autoplay = "anim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/anim = SubResource( 4 )
+blend_times = [  ]
+
+[node name="Cherry2" type="Sprite" parent="Sprites"]
+position = Vector2( 124, 472 )
+texture = ExtResource( 5 )
+hframes = 2
+frame = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry2"]
+root_node = NodePath("..")
+autoplay = "anim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/anim = SubResource( 5 )
+blend_times = [  ]
+
+[node name="Cherry5" type="Sprite" parent="Sprites"]
+position = Vector2( 200, 472 )
+texture = ExtResource( 5 )
+hframes = 2
+frame = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry5"]
+root_node = NodePath("..")
+autoplay = "anim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/anim = SubResource( 6 )
+blend_times = [  ]
+
+[node name="Cherry3" type="Sprite" parent="Sprites"]
+position = Vector2( 104, 472 )
+texture = ExtResource( 5 )
+hframes = 2
+frame = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry3"]
+root_node = NodePath("..")
+autoplay = "anim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/anim = SubResource( 7 )
+blend_times = [  ]
+
+[node name="Cherry4" type="Sprite" parent="Sprites"]
+position = Vector2( 180, 472 )
+texture = ExtResource( 5 )
+hframes = 2
+frame = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry4"]
+root_node = NodePath("..")
+autoplay = "anim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/anim = SubResource( 8 )
+blend_times = [  ]
+
+[node name="Player" type="Sprite" parent="Sprites"]
+editor/display_folded = true
+position = Vector2( 160, 464 )
+texture = ExtResource( 6 )
+hframes = 4
+frame = 3
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Player"]
+root_node = NodePath("..")
+autoplay = "anim"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/anim = SubResource( 9 )
+blend_times = [  ]
+
