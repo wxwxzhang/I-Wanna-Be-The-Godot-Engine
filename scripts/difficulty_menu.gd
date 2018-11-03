@@ -18,6 +18,7 @@ func _ready():
 		dir.make_dir(DATA_PATH)
 	
 	for i in range(1, 4, 1):
+		exists[i] = true
 		##### Load save file #####
 		var f = File.new()
 		if !f.file_exists(SAVE_FILE_NAME + str(i)):
@@ -26,8 +27,12 @@ func _ready():
 			death[i] = 0
 			time[i] = 0
 		else:
-			pass
-		f.close()
+			f.open_encrypted_with_pass(SAVE_FILE_NAME + str(i), File.READ, global.save_password)
+			var dict = f.get_var()
+			difficulty[i] = dict["difficulty"]
+			death[i] = dict["death"]
+			time[i] = dict["time"]
+			f.close()
 		##### Update labels #####
 		var lbl = get_node("Labels/Difficulty/Difficulty" + str(i))
 		if !exists[i]:
@@ -63,3 +68,6 @@ func _process(delta):
 	if Input.is_action_just_pressed('ui_right'):
 		select = select + 1 if select < 3 else 1
 	$Sprites.position.x = sprite_xstart + (select - 1) * 239
+	if Input.is_action_just_pressed("ui_shift"):
+		global.savenum = select
+		get_tree().change_scene("res://levels/init/difficulty_select.tscn")

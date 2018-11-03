@@ -8,9 +8,9 @@ func _process(delta):
 		_save()
 
 func _on_Save_body_entered(body):
-	if body.filename == "res://objects/player.tscn":
+	if body.filename == "res://objects/player/player.tscn":
 		is_player_enter = true
-	if body.filename == "res://objects/bullet.tscn":
+	if body.filename == "res://objects/player/bullet.tscn":
 		_save()
 func _on_Save_body_exited(body):
 	if body.filename == "res://objects/player.tscn":
@@ -19,10 +19,10 @@ func _on_Save_body_exited(body):
 func _save():
 	if can_save:
 		can_save = false
-		print("save!")
 		$Sprite.frame = 1
 		$Timer.start()
 		$Timer2.start()
+		global.save_game(true)
 
 func _on_Timer_timeout():
 	$Sprite.frame = 0
