@@ -13,11 +13,6 @@ var max_vspeed = 9
 var hspeed = 0
 var vspeed = 0
 
-onready var current_sprite = $Sprites/Idle
-
-func _ready():
-	set_sprite($Sprites/Idle, "idle")
-
 func _physics_process(delta):
 	var L = Input.is_action_pressed('ui_left')
 	var R = Input.is_action_pressed('ui_right')
@@ -31,27 +26,27 @@ func _physics_process(delta):
 			h = -1
 	if h != 0:
 		hspeed = max_speed * h
-		set_sprite($Sprites/Running, "running")
-		$Sprites.scale.x = h
+		_set_anim("running")
+		$Sprite.scale.x = h
 	else:
 		hspeed = 0
-		set_sprite($Sprites/Idle, "idle")
+		_set_anim("idle")
 	
 	if vspeed < -0.05:
-		set_sprite($Sprites/Jump, "jump")
+		_set_anim("jump")
 	elif vspeed > 0.05:
-		set_sprite($Sprites/Fall, "fall")
+		_set_anim("fall")
 	
 	if abs(vspeed) > max_vspeed:
 		vspeed = sign(vspeed) * max_vspeed
 	
 	if !frozen:
 		if Input.is_action_just_pressed("ui_shoot"):
-			player_shoot()
+			_shoot()
 		if Input.is_action_just_pressed('ui_shift'):
-			player_jump()
+			_jump()
 		if Input.is_action_just_released('ui_shift'):
-			player_vjump()
+			_vjump()
 			
 	vspeed += gravity 
 	move_and_slide(Vector2(hspeed, vspeed) * 50, Vector2(0, -1))
@@ -61,7 +56,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		vspeed = 0
 		djump = 1
-func player_jump():
+func _jump():
 	if is_on_floor():
 		vspeed = -jump
 		djump = 1
@@ -70,19 +65,16 @@ func player_jump():
 		vspeed = -jump2
 		djump = 0
 		$Sounds/DJump.play()
-func player_vjump():
+func _vjump():
 	if vspeed < 0:
 		vspeed *= 0.45
-func set_sprite(spr, anim):
-	current_sprite.visible = false
-	spr.visible = true
+func _set_anim(anim):
 	if $Anim.current_animation != anim:
 		$Anim.play(anim)
-	current_sprite = spr
-func player_shoot():
+func _shoot():
 	if $Bullets.get_child_count() < 4:
 		var bullet = preload("res://objects/bullet.tscn").instance()
 		bullet.position = position
-		bullet.dir = $Sprites.scale.x
+		bullet.dir = $Sprite.scale.x
 		$Bullets.add_child(bullet)
 		$Sounds/Shoot.play()

@@ -1,14 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scripts/player.gd" type="Script" id=1]
-[ext_resource path="res://sprites/player_mask.png" type="Texture" id=2]
-[ext_resource path="res://sprites/player_idle.png" type="Texture" id=3]
-[ext_resource path="res://sprites/player_running.png" type="Texture" id=4]
-[ext_resource path="res://sprites/player_jump.png" type="Texture" id=5]
-[ext_resource path="res://sprites/player_fall.png" type="Texture" id=6]
-[ext_resource path="res://sounds/sfx/jump.wav" type="AudioStream" id=7]
-[ext_resource path="res://sounds/sfx/d_jump.wav" type="AudioStream" id=8]
-[ext_resource path="res://sounds/sfx/shoot.wav" type="AudioStream" id=9]
+[ext_resource path="res://sounds/sfx/jump.wav" type="AudioStream" id=2]
+[ext_resource path="res://sounds/sfx/d_jump.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/sfx/shoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://sprites/player.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -17,7 +13,7 @@ length = 0.2
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/Fall:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,7 +22,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 10, 11 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -36,45 +32,7 @@ length = 0.4
 loop = true
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/Idle:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 2, 3, 3 ]
-}
-
-[sub_resource type="Animation" id=3]
-
-resource_name = "jump"
-length = 0.2
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/Jump:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=4]
-
-resource_name = "running"
-length = 0.4
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/Running:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -84,6 +42,63 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "jump"
+length = 0.2
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "running"
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "sliding"
+length = 0.2
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 13 ]
 }
 
 [node name="Player" type="KinematicBody2D"]
@@ -110,68 +125,15 @@ anims/fall = SubResource( 1 )
 anims/idle = SubResource( 2 )
 anims/jump = SubResource( 3 )
 anims/running = SubResource( 4 )
+anims/sliding = SubResource( 5 )
 blend_times = [  ]
-
-[node name="Sprites" type="Node2D" parent="."]
-editor/display_folded = true
-
-[node name="MaskSprite" type="Sprite" parent="Sprites"]
-visible = false
-texture = ExtResource( 2 )
-centered = false
-offset = Vector2( -17, -23 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Idle" type="Sprite" parent="Sprites"]
-texture = ExtResource( 3 )
-centered = false
-offset = Vector2( -17, -23 )
-hframes = 4
-frame = 3
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Running" type="Sprite" parent="Sprites"]
-visible = false
-texture = ExtResource( 4 )
-centered = false
-offset = Vector2( -17, -23 )
-hframes = 4
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Jump" type="Sprite" parent="Sprites"]
-visible = false
-texture = ExtResource( 5 )
-centered = false
-offset = Vector2( -17, -23 )
-hframes = 2
-frame = 1
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Fall" type="Sprite" parent="Sprites"]
-visible = false
-texture = ExtResource( 6 )
-centered = false
-offset = Vector2( -17, -23 )
-hframes = 2
-frame = 1
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Bullets" type="Node" parent="."]
 
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 7 )
+stream = ExtResource( 2 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -180,7 +142,7 @@ mix_target = 0
 bus = "Master"
 
 [node name="DJump" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 8 )
+stream = ExtResource( 3 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
@@ -189,11 +151,17 @@ mix_target = 0
 bus = "Master"
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 9 )
+stream = ExtResource( 4 )
 volume_db = 0.0
 pitch_scale = 1.0
 autoplay = false
 stream_paused = false
 mix_target = 0
 bus = "Master"
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+centered = false
+offset = Vector2( -17, -23 )
+hframes = 14
 
