@@ -93,7 +93,8 @@ func load_game(load_file):
 			save_game_clear = dict["save_game_clear"]
 			f.close()
 		else:
-			get_tree().quit()
+			game_restart()
+			return
 	game_started = true
 	auto_save = false
 	player_reset_position = true
