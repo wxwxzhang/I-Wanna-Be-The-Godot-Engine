@@ -16,9 +16,9 @@ var vspeed = 0
 export(PackedScene) var bullet
 
 func _ready():
-	if global.is_need_reset_position:
+	if global.player_reset_position:
 		position = global.save_player
-		global.is_need_reset_position = false
+		global.player_reset_position = false
 	if global.auto_save:
 		global.save_game(true)
 		global.auto_save = false

@@ -21,7 +21,7 @@ var auto_save = false
 var scene_last = null
 signal scene_start
 
-var is_need_reset_position = false
+var player_reset_position = false
 
 const DATA_PATH = "user://Data//"
 const SAVE_FILE_NAME = "user://Data//save"
@@ -96,7 +96,7 @@ func load_game(load_file):
 			get_tree().quit()
 	game_started = true
 	auto_save = false
-	is_need_reset_position = true
+	player_reset_position = true
 	get_tree().change_scene(save_scene)
 func _on_scene_start():
 	pass
