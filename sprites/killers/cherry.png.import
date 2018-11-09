@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/warp.png-f6dc668301f431b4ac7c06bb4048ed6f.stex"
+path="res://.import/cherry.png-3aece45c543dc00afbb29771dabddf2c.stex"
 
 [deps]
 
-source_file="res://sprites/warp.png"
-dest_files=[ "res://.import/warp.png-f6dc668301f431b4ac7c06bb4048ed6f.stex" ]
+source_file="res://sprites/killers/cherry.png"
+dest_files=[ "res://.import/cherry.png-3aece45c543dc00afbb29771dabddf2c.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false

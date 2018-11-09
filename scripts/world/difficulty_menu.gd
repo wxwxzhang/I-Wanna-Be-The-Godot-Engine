@@ -6,28 +6,27 @@ var difficulty = {}
 var death = {}
 var time = {}
 
-onready var sprite_xstart = $Sprites.position.x
+export(PackedScene) var dif_menu
 
-const DATA_PATH = "user://Data//";
-const SAVE_FILE_NAME = "user://Data//save";
+onready var sprite_xstart = $Sprites.position.x
 
 func _ready():
 	# Check data directory exists
 	var dir = Directory.new()
-	if !dir.dir_exists(DATA_PATH):
-		dir.make_dir(DATA_PATH)
+	if !dir.dir_exists(global.DATA_PATH):
+		dir.make_dir(global.DATA_PATH)
 	
 	for i in range(1, 4, 1):
 		exists[i] = true
 		##### Load save file #####
 		var f = File.new()
-		if !f.file_exists(SAVE_FILE_NAME + str(i)):
+		if !f.file_exists(global.SAVE_FILE_NAME + str(i)):
 			exists[i] = false
 			difficulty[i] = 0
 			death[i] = 0
 			time[i] = 0
 		else:
-			var err = f.open_encrypted_with_pass(SAVE_FILE_NAME + str(i), File.READ, global.save_password)
+			var err = f.open_encrypted_with_pass(global.SAVE_FILE_NAME + str(i), File.READ, global.save_password)
 			if err != ERR_FILE_CORRUPT:
 				var dict = f.get_var()
 				difficulty[i] = dict["difficulty"]
@@ -76,4 +75,4 @@ func _process(delta):
 	$Sprites.position.x = sprite_xstart + (select - 1) * 239
 	if Input.is_action_just_pressed("ui_shift"):
 		global.savenum = select
-		get_tree().change_scene("res://levels/init/difficulty_select.tscn")
+		get_tree().change_scene_to(dif_menu)

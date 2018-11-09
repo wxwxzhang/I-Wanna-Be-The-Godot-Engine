@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_mask.png-e928913217b9d3d03727bfb059b38475.stex"
+path="res://.import/spike_down.png-2aa0d455d401b6249811a415a23eca64.stex"
 
 [deps]
 
-source_file="res://sprites/player_mask.png"
-dest_files=[ "res://.import/player_mask.png-e928913217b9d3d03727bfb059b38475.stex" ]
+source_file="res://sprites/killers/spike_down.png"
+dest_files=[ "res://.import/spike_down.png-2aa0d455d401b6249811a415a23eca64.stex" ]
 
 [params]
 
@@ -17,7 +17,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

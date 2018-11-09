@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player_start.png-994ab25531959a9565a396f83c046226.stex"
+path="res://.import/player_mask.png-6ba1b79e4bc0afe8e04c44a7085c30e8.stex"
 
 [deps]
 
-source_file="res://sprites/player_start.png"
-dest_files=[ "res://.import/player_start.png-994ab25531959a9565a396f83c046226.stex" ]
+source_file="res://sprites/player/player_mask.png"
+dest_files=[ "res://.import/player_mask.png-6ba1b79e4bc0afe8e04c44a7085c30e8.stex" ]
 
 [params]
 
@@ -17,7 +17,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

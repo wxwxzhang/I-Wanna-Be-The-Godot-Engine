@@ -1,8 +1,8 @@
 extends Node
 
-var room_caption_def = "I Wanna Be The Godot Engine"
-var start_scene = "res://levels/sample/stage01.tscn"
-var save_password = "Put something here"
+export(String, MULTILINE) var room_caption_def
+export(PackedScene) var start_scene
+export(String, MULTILINE) var save_password
 
 var savenum = 1
 var difficulty = 0
@@ -23,10 +23,15 @@ signal scene_start
 
 var is_need_reset_position = false
 
-const DATA_PATH = "user://Data//";
-const SAVE_FILE_NAME = "user://Data//save";
+const DATA_PATH = "user://Data//"
+const SAVE_FILE_NAME = "user://Data//save"
 
-enum { DIF_MEDIUM, DIF_HARD, DIF_VERYHARD, DIF_IMPOSSIBLE }
+enum { 
+	DIF_MEDIUM = 0
+	DIF_HARD = 1
+	DIF_VERYHARD = 2
+	DIF_IMPOSSIBLE = 3
+}
 
 func _ready():
 	connect("scene_start", self, "_on_scene_start") 
@@ -88,7 +93,7 @@ func load_game(load_file):
 			save_game_clear = dict["save_game_clear"]
 			f.close()
 		else:
-			save_scene = "res://levels/init/difficulty_select.tscn"
+			get_tree().quit()
 	game_started = true
 	auto_save = false
 	is_need_reset_position = true
@@ -96,7 +101,7 @@ func load_game(load_file):
 func _on_scene_start():
 	pass
 func game_restart():
-	get_tree().change_scene("res://levels/init/title.tscn")
+	get_tree().change_scene(ProjectSettings.get_setting("application/run/main_scene"))
 	# Initialize
 	game_started = false
 	OS.set_window_title(room_caption_def)

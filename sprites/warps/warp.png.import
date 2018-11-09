@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player.png-f534b8a02ffb80eefc72936296201445.stex"
+path="res://.import/warp.png-82ca53a165f76ac885333480c2b834f5.stex"
 
 [deps]
 
-source_file="res://sprites/player.png"
-dest_files=[ "res://.import/player.png-f534b8a02ffb80eefc72936296201445.stex" ]
+source_file="res://sprites/warps/warp.png"
+dest_files=[ "res://.import/warp.png-82ca53a165f76ac885333480c2b834f5.stex" ]
 
 [params]
 

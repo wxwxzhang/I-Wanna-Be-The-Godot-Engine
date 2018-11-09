@@ -13,6 +13,8 @@ var max_vspeed = 9
 var hspeed = 0
 var vspeed = 0
 
+export(PackedScene) var bullet
+
 func _ready():
 	if global.is_need_reset_position:
 		position = global.save_player
@@ -80,8 +82,8 @@ func _set_anim(anim):
 		$Anim.play(anim)
 func _shoot():
 	if $Bullets.get_child_count() < 4:
-		var bullet = preload("res://objects/player/bullet.tscn").instance()
-		bullet.position = position
-		bullet.dir = $Sprite.scale.x
-		$Bullets.add_child(bullet)
+		var inst = bullet.instance()
+		inst.position = position
+		inst.dir = $Sprite.scale.x
+		$Bullets.add_child(inst)
 		$Sounds/Shoot.play()

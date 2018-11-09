@@ -21,7 +21,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-global="*res://scripts/global.gd"
+global="*res://objects/world/world.tscn"
 
 [display]
 
@@ -57,6 +57,7 @@ ui_f2={
 2d_physics/layer_2="player"
 2d_physics/layer_3="bullet"
 2d_physics/layer_4="save"
+2d_physics/layer_5="warp"
 
 [physics]
 

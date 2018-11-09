@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/all_tiles.png-5531e22dc599fa0222f677a0e32d15a4.stex"
+path="res://.import/megaman.png-ef384571019f0458f97a917ef1976149.stex"
 
 [deps]
 
-source_file="res://sprites/all_tiles.png"
-dest_files=[ "res://.import/all_tiles.png-5531e22dc599fa0222f677a0e32d15a4.stex" ]
+source_file="res://sprites/tiles/megaman.png"
+dest_files=[ "res://.import/megaman.png-ef384571019f0458f97a917ef1976149.stex" ]
 
 [params]
 

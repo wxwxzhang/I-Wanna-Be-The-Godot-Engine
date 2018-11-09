@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spike_down.png-c37d5b7692d0eac102ddd7314aa2dcca.stex"
+path="res://.import/bullet.png-b57c26c39100bc907c674897a24d2d46.stex"
 
 [deps]
 
-source_file="res://sprites/spike_down.png"
-dest_files=[ "res://.import/spike_down.png-c37d5b7692d0eac102ddd7314aa2dcca.stex" ]
+source_file="res://sprites/player/bullet.png"
+dest_files=[ "res://.import/bullet.png-b57c26c39100bc907c674897a24d2d46.stex" ]
 
 [params]
 

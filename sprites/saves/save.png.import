@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cherry.png-d17bb5f771b9bbf2b3df84123eed57ad.stex"
+path="res://.import/save.png-1dd6d7e355eb90caba105c602f9fa307.stex"
 
 [deps]
 
-source_file="res://sprites/cherry.png"
-dest_files=[ "res://.import/cherry.png-d17bb5f771b9bbf2b3df84123eed57ad.stex" ]
+source_file="res://sprites/saves/save.png"
+dest_files=[ "res://.import/save.png-1dd6d7e355eb90caba105c602f9fa307.stex" ]
 
 [params]
 
@@ -21,7 +21,7 @@ flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
-process/fix_alpha_border=false
+process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
