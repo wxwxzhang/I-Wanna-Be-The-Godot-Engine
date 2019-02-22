@@ -65,6 +65,11 @@ func _physics_process(delta):
 	if is_on_floor():
 		vspeed = 0
 		djump = 1
+	##### Check player killer #####
+	for i in get_slide_count():
+		if get_slide_collision(i).get_collider().is_in_group("killer"):
+			# Kill the player
+			global.kill_player()
 func _jump():
 	if is_on_floor():
 		vspeed = -jump

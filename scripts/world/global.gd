@@ -106,3 +106,10 @@ func game_restart():
 	save_scene = ""
 	save_player = Vector2()
 	save_game_clear = false
+func kill_player():
+	for i in get_tree().get_nodes_in_group("player"):
+		var inst = load("res://objects/player/BloodEmitter.tscn").instance()
+		inst.position = i.position
+		i.get_parent().add_child(inst)
+		i.queue_free()
+		
