@@ -81,9 +81,9 @@ func _set_anim(anim):
 	if $Anim.current_animation != anim:
 		$Anim.play(anim)
 func _shoot():
-	if $Bullets.get_child_count() < 4:
+	if get_tree().get_nodes_in_group("bullet").size() < 4:
 		var inst = bullet.instance()
 		inst.position = position
 		inst.dir = $Sprite.scale.x
-		$Bullets.add_child(inst)
+		get_parent().add_child(inst)
 		$Sounds/Shoot.play()

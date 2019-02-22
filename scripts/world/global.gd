@@ -23,8 +23,8 @@ signal scene_start
 
 var player_reset_position = false
 
-const DATA_PATH = "user://Data//"
-const SAVE_FILE_NAME = "user://Data//save"
+const DATA_PATH = "user://Data/"
+const SAVE_FILE_NAME = "user://Data/save"
 
 enum { 
 	DIF_MEDIUM = 0
@@ -57,17 +57,11 @@ func _update_title():
 			 " -" + 
 			 " Deaths: " + str(death) + 
 			 " Time: " + str(time / 216000 % 60) + ":" + str(time / 3600 % 60) + ":" + str(time / 60 % 60))
-func get_player():
-	var node = get_tree().get_root().find_node("Player", true, false) 
-	if node == null:
-		return null
-	if node.filename.find("player.tscn") == -1:
-		return null
-	return node
 func save_game(save_position):
 	if save_position:
 		save_scene = get_tree().current_scene.filename
-		save_player = get_player().position
+		for i in get_tree().get_nodes_in_group("player"):
+			save_player = i.position
 	var dict = {}
 	dict["death"] = death
 	dict["time"] = time
@@ -105,7 +99,6 @@ func game_restart():
 	get_tree().change_scene(ProjectSettings.get_setting("application/run/main_scene"))
 	# Initialize
 	game_started = false
-	OS.set_window_title(room_caption_def)
 	savenum = 1
 	death = 0
 	time = 0

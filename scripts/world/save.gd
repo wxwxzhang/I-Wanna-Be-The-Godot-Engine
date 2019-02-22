@@ -2,13 +2,10 @@ extends Area2D
 
 var can_save = true
 
-export(Script) var player
-export(Script) var bullet
-
 func _physics_process(delta):
 	for i in get_overlapping_bodies():
-		if (i is player && Input.is_action_just_pressed("ui_shoot")) || \
-				i is bullet:
+		if (i.is_in_group("player") && Input.is_action_just_pressed("ui_shoot")) || \
+				i.is_in_group("bullet"):
 			_save()
 func _save():
 	if can_save:

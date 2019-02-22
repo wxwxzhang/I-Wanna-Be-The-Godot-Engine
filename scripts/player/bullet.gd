@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 var dir = 1
-
 onready var spr = $Node/Sprite
 
 func _ready():
