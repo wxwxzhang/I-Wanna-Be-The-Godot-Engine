@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://tilesets/all_tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://tilesets/block.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/player_start.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/warps/warp_start.tscn" type="PackedScene" id=3]
+
 
 [node name="DifficultySelect" type="Node2D"]
 

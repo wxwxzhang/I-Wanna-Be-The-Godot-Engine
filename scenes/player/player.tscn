@@ -16,9 +16,9 @@
 [ext_resource path="res://assets/sprites/player/kid/running_3.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprites/player/kid/sliding_0.png" type="Texture" id=15]
 [ext_resource path="res://assets/sprites/player/kid/sliding_1.png" type="Texture" id=16]
-[ext_resource path="res://assets/sounds/sfx/jump.wav" type="AudioStream" id=17]
-[ext_resource path="res://assets/sounds/sfx/d_jump.wav" type="AudioStream" id=18]
-[ext_resource path="res://assets/sounds/sfx/shoot.wav" type="AudioStream" id=19]
+[ext_resource path="res://assets/audio/sfx/jump.wav" type="AudioStream" id=17]
+[ext_resource path="res://assets/audio/sfx/d_jump.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/audio/sfx/shoot.wav" type="AudioStream" id=19]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

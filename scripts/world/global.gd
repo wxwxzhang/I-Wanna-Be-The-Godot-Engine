@@ -54,8 +54,12 @@ func _process(delta):
 		time += 1
 		_update_title()
 		if Input.is_action_just_pressed("ui_restart"):
+			# Load save data
 			load_game(false)
-	
+			# Unpause music
+			$AudioStreamPlayer/AnimationPlayer.stop()
+			$AudioStreamPlayer.stream_paused = false
+			$AudioStreamPlayer.volume_db = 0
 	##### Function keys #####
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().quit()
@@ -63,10 +67,17 @@ func _process(delta):
 		game_restart()
 func _update_title():
 	## Update window caption (in game)
+	var t = time
+	var s = (t / 60) % 60
+	var m = (t / 3600) % 60
+	var h = (t / 216000) % 60
+	var time_str = str(h) + ":" + \
+			(str(m) if str(m).length() > 1 else "0" + str(m)) + ":" + \
+			(str(s) if str(s).length() > 1 else "0" + str(s))
 	OS.set_window_title(room_caption_def + 
 			 " -" + 
 			 " Deaths: " + str(death) + 
-			 " Time: " + str(time / 216000 % 60) + ":" + str(time / 3600 % 60) + ":" + str(time / 60 % 60))
+			 " Time: " + time_str)
 func save_game(save_position):
 	## Save the game
 	if save_position:

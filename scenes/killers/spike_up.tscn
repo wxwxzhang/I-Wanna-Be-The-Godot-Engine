@@ -2,7 +2,6 @@
 
 [ext_resource path="res://assets/sprites/killers/spikes/spike_down.png" type="Texture" id=1]
 
-
 [node name="SpikeUp" type="StaticBody2D" groups=[
 "killer",
 ]]

@@ -2,7 +2,9 @@
 
 [ext_resource path="res://scripts/world/camera.gd" type="Script" id=1]
 
-[node name="Camera" type="Camera2D"]
+[node name="Camera" type="Camera2D" groups=[
+"camera",
+]]
 anchor_mode = 0
 current = true
 script = ExtResource( 1 )
