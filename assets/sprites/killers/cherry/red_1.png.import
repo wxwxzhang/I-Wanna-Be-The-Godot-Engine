@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bullet.png-8b96603af2739323458e5088a54b7d16.stex"
+path="res://.import/red_1.png-e42cc871880d3ce09b24b3bf8fad46dd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/bullet.png"
-dest_files=[ "res://.import/bullet.png-8b96603af2739323458e5088a54b7d16.stex" ]
+source_file="res://assets/sprites/killers/cherry/red_1.png"
+dest_files=[ "res://.import/red_1.png-e42cc871880d3ce09b24b3bf8fad46dd.stex" ]
 
 [params]
 

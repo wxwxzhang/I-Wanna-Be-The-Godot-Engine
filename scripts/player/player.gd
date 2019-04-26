@@ -75,11 +75,11 @@ func _jump():
 	if is_on_floor():
 		linear_vel.y = -jump
 		djump = 1
-		$Sounds/Jump.play()
+		$Jump.play()
 	elif djump == 1:
 		linear_vel.y = -jump2
 		djump = 0
-		$Sounds/DJump.play()
+		$DJump.play()
 func _vjump():
 	if linear_vel.y < 0:
 		linear_vel.y *= 0.45
@@ -92,4 +92,4 @@ func _shoot():
 		inst.position = position
 		inst.dir = anim_spr.scale.x
 		get_parent().add_child(inst)
-		$Sounds/Shoot.play()
+		$Shoot.play()

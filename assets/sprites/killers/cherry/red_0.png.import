@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprCherry_1.png-0388a857112cd20a2011deea51aa248f.stex"
+path="res://.import/red_0.png-ad185cc35f4bb863b31b2869e010a707.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/killers/cherry/sprCherry_1.png"
-dest_files=[ "res://.import/sprCherry_1.png-0388a857112cd20a2011deea51aa248f.stex" ]
+source_file="res://assets/sprites/killers/cherry/red_0.png"
+dest_files=[ "res://.import/red_0.png-ad185cc35f4bb863b31b2869e010a707.stex" ]
 
 [params]
 

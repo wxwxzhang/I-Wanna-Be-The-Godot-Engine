@@ -40,7 +40,7 @@ animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "running",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
@@ -63,18 +63,21 @@ animation = "idle"
 frame = 2
 speed_scale = 2.0
 playing = true
+centered = false
+offset = Vector2( -17, -23 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="MaskShape" type="CollisionPolygon2D" parent="."]
-position = Vector2( 6, 4 )
+position = Vector2( 5, -3 )
 polygon = PoolVector2Array( -10, -9, -10, 12, 1, 12, 1, -9 )
 
-[node name="Sounds" type="Node2D" parent="."]
-
-[node name="Jump" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
 
-[node name="DJump" type="AudioStreamPlayer" parent="Sounds"]
+[node name="DJump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
 
-[node name="Shoot" type="AudioStreamPlayer" parent="Sounds"]
+[node name="Shoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )

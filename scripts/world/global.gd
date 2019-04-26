@@ -122,11 +122,11 @@ func game_restart():
 func kill_player():
 	## Kill the player
 	# Get player node
-	for i in get_tree().get_nodes_in_group("player"):
+	for player in get_tree().get_nodes_in_group("player"):
 		# Create emitter
 		var inst = emitter.instance()
-		inst.position = i.position
-		i.get_parent().add_child(inst)
+		inst.position = player.position
+		player.get_parent().add_child(inst)
 		# Destroy player
-		i.queue_free()
+		player.queue_free()
 		

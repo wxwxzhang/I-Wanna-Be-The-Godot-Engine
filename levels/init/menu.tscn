@@ -9,8 +9,8 @@
 [ext_resource path="res://assets/sprites/player/kid/idle_1.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/player/kid/idle_2.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/player/kid/idle_3.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/killers/cherry/sprCherry_0.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/killers/cherry/sprCherry_1.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/killers/cherry/red_0.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/killers/cherry/red_1.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44

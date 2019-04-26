@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tilesets/all_tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://scenes/killers/spike_up.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/saves/save.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/player/player_start.tscn" type="PackedScene" id=4]
-
-
-
-
+[ext_resource path="res://scenes/saves/save.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/player/player_start.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/killers/spike_up.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/world/camera.tscn" type="PackedScene" id=5]
 
 [node name="Stage01" type="Node2D"]
 __meta__ = {
@@ -15,7 +12,7 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 800.0
+margin_right = 1600.0
 margin_bottom = 608.0
 color = Color( 0.501961, 1, 1, 1 )
 __meta__ = {
@@ -30,20 +27,21 @@ cell_size = Vector2( 32, 32 )
 collision_use_kinematic = true
 collision_mask = 5
 format = 1
-tile_data = PoolIntArray( 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 1, 0, 1114125, 1, 0, 1114126, 1, 0, 1114127, 1, 0, 1114128, 1, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 1, 0, 1179651, 1, 0, 1179652, 1, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 1, 0, 1179666, 1, 0, 1179667, 1, 0, 1179668, 1, 0, 1179669, 1, 0, 1179670, 1, 0, 1179671, 1, 0, 1179672, 1, 0 )
+tile_data = PoolIntArray( 1048588, 0, 0, 1048589, 0, 0, 1048590, 0, 0, 1048591, 0, 0, 1048592, 0, 0, 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 1, 0, 1114125, 1, 0, 1114126, 1, 0, 1114127, 1, 0, 1114128, 1, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1179648, 0, 0, 1179649, 0, 0, 1179650, 1, 0, 1179651, 1, 0, 1179652, 1, 0, 1179653, 0, 0, 1179654, 0, 0, 1179655, 0, 0, 1179656, 0, 0, 1179657, 1, 0, 1179658, 1, 0, 1179659, 1, 0, 1179660, 1, 0, 1179661, 1, 0, 1179662, 1, 0, 1179663, 1, 0, 1179664, 1, 0, 1179665, 1, 0, 1179666, 1, 0, 1179667, 1, 0, 1179668, 1, 0, 1179669, 1, 0, 1179670, 1, 0, 1179671, 1, 0, 1179672, 1, 0, 1179673, 0, 0, 1179674, 0, 0, 1179675, 0, 0, 1179676, 0, 0, 1179677, 0, 0, 1179678, 0, 0, 1179679, 0, 0, 1179680, 0, 0, 1179681, 0, 0, 1179682, 0, 0, 1179683, 0, 0, 1179684, 0, 0, 1179685, 0, 0, 1179686, 0, 0, 1179687, 0, 0, 1179688, 0, 0, 1179689, 0, 0, 1179690, 0, 0, 1179691, 0, 0, 1179692, 0, 0, 1179693, 0, 0, 1179694, 0, 0, 1179695, 0, 0, 1179696, 0, 0, 1179697, 0, 0 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="SpikeUp" parent="TileMap" instance=ExtResource( 2 )]
-position = Vector2( 368, 528 )
-
-[node name="Save" parent="." instance=ExtResource( 3 )]
+[node name="Save" parent="." instance=ExtResource( 2 )]
 position = Vector2( 304, 528 )
 
-[node name="PlayerStart" parent="." instance=ExtResource( 4 )]
-position = Vector2( 32, 544 )
+[node name="PlayerStart" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, 544 )
 
-[node name="SpikeUp" parent="." instance=ExtResource( 2 )]
+[node name="SpikeUp" parent="." instance=ExtResource( 4 )]
 position = Vector2( 400, 496 )
 
+[node name="SpikeUp2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 368, 528 )
+
+[node name="Camera" parent="." instance=ExtResource( 5 )]
