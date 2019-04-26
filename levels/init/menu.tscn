@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/world/difficulty_menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/init/difficulty_select.tscn" type="PackedScene" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/sprites/player/kid/idle_3.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/killers/cherry/red_0.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/killers/cherry/red_1.png" type="Texture" id=11]
-
+[ext_resource path="res://scenes/world/camera.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -263,3 +263,5 @@ position = Vector2( 215, 458 )
 frames = SubResource( 4 )
 speed_scale = 0.667
 centered = false
+
+[node name="Camera" parent="." instance=ExtResource( 12 )]

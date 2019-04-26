@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tilesets/block.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/player/player_start.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/warps/warp_start.tscn" type="PackedScene" id=3]
-
+[ext_resource path="res://scenes/world/camera.tscn" type="PackedScene" id=4]
 
 [node name="DifficultySelect" type="Node2D"]
 
@@ -47,3 +47,5 @@ dif_name = "Very Hard"
 position = Vector2( 384, 160 )
 dif = 3
 dif_name = "Impossible"
+
+[node name="Camera" parent="." instance=ExtResource( 4 )]

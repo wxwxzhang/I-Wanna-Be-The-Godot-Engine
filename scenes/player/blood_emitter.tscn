@@ -12,6 +12,7 @@ spread = 180.0
 gravity = Vector3( 0, 300, 0 )
 initial_velocity = 206.9
 initial_velocity_random = 1.0
+angular_velocity = -1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 720.0
@@ -19,7 +20,6 @@ angle_random = 0.36
 scale = 2.0
 
 [node name="BloodEmitter" type="Particles2D"]
-emitting = false
 amount = 5000
 lifetime = 10.0
 process_material = SubResource( 1 )

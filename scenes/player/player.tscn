@@ -60,7 +60,7 @@ bullet = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 2
+frame = 1
 speed_scale = 2.0
 playing = true
 centered = false

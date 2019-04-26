@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/world/title_menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/init/menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tilesets/block.tres" type="TileSet" id=3]
 [ext_resource path="res://scenes/world/play_music.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/audio/music/guy_rock.ogg" type="AudioStream" id=5]
+[ext_resource path="res://scenes/world/camera.tscn" type="PackedScene" id=6]
 
 [node name="Title" type="Node2D"]
 script = ExtResource( 1 )
@@ -33,3 +34,5 @@ __meta__ = {
 [node name="PlayMusic" parent="." instance=ExtResource( 4 )]
 position = Vector2( 50, 560 )
 music = ExtResource( 5 )
+
+[node name="Camera" parent="." instance=ExtResource( 6 )]
