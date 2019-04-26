@@ -10,12 +10,12 @@
 [ext_resource path="res://assets/sprites/player/kid/jump_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/player/kid/fall_0.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/player/kid/fall_1.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/player/kid/running_0.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/player/kid/running_1.png" type="Texture" id=12]
-[ext_resource path="res://assets/sprites/player/kid/running_2.png" type="Texture" id=13]
-[ext_resource path="res://assets/sprites/player/kid/running_3.png" type="Texture" id=14]
-[ext_resource path="res://assets/sprites/player/kid/sliding_0.png" type="Texture" id=15]
-[ext_resource path="res://assets/sprites/player/kid/sliding_1.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprites/player/kid/sliding_0.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/player/kid/sliding_1.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/player/kid/running_0.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/player/kid/running_1.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/player/kid/running_2.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/player/kid/running_3.png" type="Texture" id=16]
 [ext_resource path="res://assets/audio/sfx/jump.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/audio/sfx/d_jump.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/audio/sfx/shoot.wav" type="AudioStream" id=19]
@@ -37,15 +37,15 @@ animations = [ {
 "name": "fall",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "running",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "sliding",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "running",
+"speed": 10.0
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=[
@@ -60,7 +60,7 @@ bullet = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
+frame = 3
 speed_scale = 2.0
 playing = true
 centered = false

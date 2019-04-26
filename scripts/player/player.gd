@@ -12,6 +12,9 @@ var max_vspeed = 9
 
 var linear_vel = Vector2()
 
+var on_vine_left = false
+var on_vine_right = false
+
 export(PackedScene) var bullet
 onready var anim_spr = $AnimatedSprite
 
@@ -33,10 +36,13 @@ func _physics_process(delta):
 			h = 1
 		elif L:
 			h = -1
+	
 	if h != 0:
-		linear_vel.x = max_speed * h
-		_set_anim("running")
-		anim_spr.scale.x = h
+		if !on_vine_left and !on_vine_right:
+			anim_spr.scale.x = h
+		if (h == -1 and !on_vine_right) or (h == 1 and !on_vine_left):
+			linear_vel.x = max_speed * h
+			_set_anim("running")
 	else:
 		linear_vel.x = 0
 		_set_anim("idle")
@@ -49,6 +55,29 @@ func _physics_process(delta):
 	if abs(linear_vel.y) > max_vspeed:
 		linear_vel.y = sign(linear_vel.y) * max_vspeed
 	
+	if on_vine_left or on_vine_right:
+		if on_vine_right:
+			anim_spr.scale.x = -1
+		else:
+			anim_spr.scale_x = 1
+		linear_vel.y = 2
+		_set_anim("sliding")
+		
+		if (on_vine_left and Input.is_action_just_pressed("ui_right")) or \
+				(on_vine_right and Input.is_action_just_pressed("ui_left")):
+			if Input.is_action_pressed("ui_shift"):
+				if on_vine_right:
+					linear_vel.x = -15
+				else:
+					linear_vel.x = 15
+				
+				linear_vel.y = -9
+				_set_anim("jump")
+			else:
+				if on_vine_right:
+					linear_vel.x = -3
+				else:
+					linear_vel.x = 3
 	if !frozen:
 		if Input.is_action_just_pressed("ui_shoot"):
 			_shoot()
@@ -66,12 +95,9 @@ func _physics_process(delta):
 		linear_vel.y = 0
 		djump = 1
 	##### Check player killer #####
-	var block_collision = false
-	var killer_collision = false
-	for i in get_slide_count():
-		if get_slide_collision(i).get_collider().is_in_group("killer"):
-			# Kill the player
-			global.kill_player()
+	if _check("killer"):
+		# Kill the player
+		global.kill_player()
 		
 func _jump():
 	if is_on_floor():
@@ -95,3 +121,8 @@ func _shoot():
 		inst.dir = anim_spr.scale.x
 		get_parent().add_child(inst)
 		$Shoot.play()
+func _check(group):
+	for i in get_slide_count():
+		if get_slide_collision(i).get_collider().is_in_group(group):
+			return true
+	return false

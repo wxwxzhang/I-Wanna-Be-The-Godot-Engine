@@ -14,6 +14,3 @@ func _on_Timer_timeout():
 		get_parent().add_child(inst)
 		inst.position = camera.position + Vector2(400, 304)
 
-func _on_Timer2_timeout():
-	# Play death music
-	$DeathMusic.play()
