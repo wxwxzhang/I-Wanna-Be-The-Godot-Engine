@@ -1,16 +1,17 @@
 extends KinematicBody2D
 
+const JUMP = 8.5
+const JUMP2 = 7
+
+const GRAVITY = 0.4
+
+const MAX_SPEED = 3
+const MAX_VSPEED = 9
+
 var frozen = false
 
-var jump = 8.5
-var jump2 = 7
-var gravity = 0.4
-
-var djump = 1
-var max_speed = 3
-var max_vspeed = 9
-
 var linear_vel = Vector2()
+var djump = 1
 
 var on_vine_left = false
 var on_vine_right = false
@@ -41,7 +42,7 @@ func _physics_process(delta):
 		if !on_vine_left and !on_vine_right:
 			anim_spr.scale.x = h
 		if (h == -1 and !on_vine_right) or (h == 1 and !on_vine_left):
-			linear_vel.x = max_speed * h
+			linear_vel.x = MAX_SPEED * h
 			_set_anim("running")
 	else:
 		linear_vel.x = 0
@@ -52,8 +53,8 @@ func _physics_process(delta):
 	elif linear_vel.y > 0.05:
 		_set_anim("fall")
 	
-	if abs(linear_vel.y) > max_vspeed:
-		linear_vel.y = sign(linear_vel.y) * max_vspeed
+	if abs(linear_vel.y) > MAX_VSPEED:
+		linear_vel.y = sign(linear_vel.y) * MAX_VSPEED
 	
 	if on_vine_left or on_vine_right:
 		if on_vine_right:
@@ -86,7 +87,7 @@ func _physics_process(delta):
 		if Input.is_action_just_released('ui_shift'):
 			_vjump()
 			
-	linear_vel.y += gravity 
+	linear_vel.y += GRAVITY 
 	move_and_slide(linear_vel * 50, Vector2(0, -1))
 	
 	if is_on_ceiling():
@@ -101,11 +102,11 @@ func _physics_process(delta):
 		
 func _jump():
 	if is_on_floor():
-		linear_vel.y = -jump
+		linear_vel.y = -JUMP
 		djump = 1
 		$Jump.play()
 	elif djump == 1:
-		linear_vel.y = -jump2
+		linear_vel.y = -JUMP2
 		djump = 0
 		$DJump.play()
 func _vjump():
