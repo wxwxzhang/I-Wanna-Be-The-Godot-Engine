@@ -1,12 +1,16 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/world/difficulty_menu.gd" type="Script" id=1]
 [ext_resource path="res://levels/init/difficulty_select.tscn" type="PackedScene" id=2]
-[ext_resource path="res://tiles/all_tiles.tres" type="TileSet" id=3]
-[ext_resource path="res://tiles/megaman.tres" type="TileSet" id=4]
-[ext_resource path="res://fonts/arialbd.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://sprites/player/player.png" type="Texture" id=6]
-[ext_resource path="res://sprites/killers/cherry.png" type="Texture" id=7]
+[ext_resource path="res://tilesets/all_tiles.tres" type="TileSet" id=3]
+[ext_resource path="res://tilesets/megaman.tres" type="TileSet" id=4]
+[ext_resource path="res://assets/fonts/arialbd.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/sprites/player/kid/idle_0.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/player/kid/idle_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/player/kid/idle_2.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/player/kid/idle_3.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/killers/cherry/sprCherry_0.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/killers/cherry/sprCherry_1.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 44
@@ -16,130 +20,21 @@ font_data = ExtResource( 5 )
 size = 17
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "anim"
-length = 0.4
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
-[sub_resource type="Animation" id=4]
-resource_name = "anim"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.300165 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "anim"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.300165 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "anim"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.300165 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "anim"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.300165 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "anim"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.300165 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
-
-[sub_resource type="Animation" id=9]
-resource_name = "anim"
-length = 0.6
-loop = true
-step = 0.15
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.300165 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Menu" type="Node2D"]
 script = ExtResource( 1 )
@@ -196,7 +91,6 @@ __meta__ = {
 }
 
 [node name="Save" type="Node2D" parent="Labels"]
-editor/display_folded = true
 
 [node name="Save1" type="Label" parent="Labels/Save"]
 margin_left = 96.0
@@ -325,120 +219,46 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Time:"
 
 [node name="Sprites" type="Node2D" parent="."]
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Player" type="Sprite" parent="Sprites"]
-editor/display_folded = true
-position = Vector2( 161, 470 )
+[node name="Player" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 148, 447 )
 z_index = 1
-texture = ExtResource( 6 )
+frames = SubResource( 3 )
+speed_scale = 2.0
 centered = false
-offset = Vector2( -17, -23 )
-hframes = 14
-frame = 3
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Player"]
-autoplay = "anim"
-anims/anim = SubResource( 3 )
-
-[node name="Cherry1" type="Sprite" parent="Sprites"]
-editor/display_folded = true
-position = Vector2( 141.519, 469.011 )
-texture = ExtResource( 7 )
+[node name="Cherry1" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 135, 458 )
+frames = SubResource( 4 )
+speed_scale = 0.667
 centered = false
-offset = Vector2( -10.5192, -12.0108 )
-hframes = 2
-frame = 1
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry1"]
-autoplay = "anim"
-anims/anim = SubResource( 4 )
-
-[node name="Cherry2" type="Sprite" parent="Sprites"]
-editor/display_folded = true
-position = Vector2( 141.519, 469.011 )
-texture = ExtResource( 7 )
+[node name="Cherry2" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 115, 458 )
+frames = SubResource( 4 )
+speed_scale = 0.667
 centered = false
-offset = Vector2( -30.5192, -12.0108 )
-hframes = 2
-frame = 1
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry2"]
-autoplay = "anim"
-anims/anim = SubResource( 5 )
-
-[node name="Cherry3" type="Sprite" parent="Sprites"]
-editor/display_folded = true
-position = Vector2( 141.519, 469.011 )
-texture = ExtResource( 7 )
+[node name="Cherry3" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 95, 458 )
+frames = SubResource( 4 )
+speed_scale = 0.667
 centered = false
-offset = Vector2( -50.5192, -12.0108 )
-hframes = 2
-frame = 1
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry3"]
-autoplay = "anim"
-anims/anim = SubResource( 6 )
-
-[node name="Cherry4" type="Sprite" parent="Sprites"]
-editor/display_folded = true
-position = Vector2( 222.519, 468 )
-texture = ExtResource( 7 )
+[node name="Cherry4" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 175, 458 )
+frames = SubResource( 4 )
+speed_scale = 0.667
 centered = false
-offset = Vector2( -50.5192, -12.0108 )
-hframes = 2
-frame = 1
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry4"]
-autoplay = "anim"
-anims/anim = SubResource( 7 )
-
-[node name="Cherry5" type="Sprite" parent="Sprites"]
-editor/display_folded = true
-position = Vector2( 242.519, 468 )
-texture = ExtResource( 7 )
+[node name="Cherry5" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 195, 458 )
+frames = SubResource( 4 )
+speed_scale = 0.667
 centered = false
-offset = Vector2( -50.5192, -12.0108 )
-hframes = 2
-frame = 1
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry5"]
-autoplay = "anim"
-anims/anim = SubResource( 8 )
-
-[node name="Cherry6" type="Sprite" parent="Sprites"]
-editor/display_folded = true
-position = Vector2( 262.519, 468 )
-texture = ExtResource( 7 )
+[node name="Cherry6" type="AnimatedSprite" parent="Sprites"]
+position = Vector2( 215, 458 )
+frames = SubResource( 4 )
+speed_scale = 0.667
 centered = false
-offset = Vector2( -50.5192, -12.0108 )
-hframes = 2
-frame = 1
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/Cherry6"]
-autoplay = "anim"
-anims/anim = SubResource( 9 )
-

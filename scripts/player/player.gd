@@ -10,10 +10,10 @@ var djump = 1
 var max_speed = 3
 var max_vspeed = 9
 
-var hspeed = 0
-var vspeed = 0
+var linear_vel = Vector2()
 
 export(PackedScene) var bullet
+onready var anim_spr = $AnimatedSprite
 
 func _ready():
 	if global.player_reset_position:
@@ -34,20 +34,20 @@ func _physics_process(delta):
 		elif L:
 			h = -1
 	if h != 0:
-		hspeed = max_speed * h
+		linear_vel.x = max_speed * h
 		_set_anim("running")
-		$Sprite.scale.x = h
+		anim_spr.scale.x = h
 	else:
-		hspeed = 0
+		linear_vel.x = 0
 		_set_anim("idle")
 	
-	if vspeed < -0.05:
+	if linear_vel.y < -0.05:
 		_set_anim("jump")
-	elif vspeed > 0.05:
+	elif linear_vel.y > 0.05:
 		_set_anim("fall")
 	
-	if abs(vspeed) > max_vspeed:
-		vspeed = sign(vspeed) * max_vspeed
+	if abs(linear_vel.y) > max_vspeed:
+		linear_vel.y = sign(linear_vel.y) * max_vspeed
 	
 	if !frozen:
 		if Input.is_action_just_pressed("ui_shoot"):
@@ -57,38 +57,39 @@ func _physics_process(delta):
 		if Input.is_action_just_released('ui_shift'):
 			_vjump()
 			
-	vspeed += gravity 
-	move_and_slide(Vector2(hspeed, vspeed) * 50, Vector2(0, -1))
+	linear_vel.y += gravity 
+	move_and_slide(linear_vel * 50, Vector2(0, -1))
 	
 	if is_on_ceiling():
-		vspeed = 0
+		linear_vel.y = 0
 	if is_on_floor():
-		vspeed = 0
+		linear_vel.y = 0
 		djump = 1
 	##### Check player killer #####
 	for i in get_slide_count():
 		if get_slide_collision(i).get_collider().is_in_group("killer"):
 			# Kill the player
 			global.kill_player()
+			return
 func _jump():
 	if is_on_floor():
-		vspeed = -jump
+		linear_vel.y = -jump
 		djump = 1
 		$Sounds/Jump.play()
 	elif djump == 1:
-		vspeed = -jump2
+		linear_vel.y = -jump2
 		djump = 0
 		$Sounds/DJump.play()
 func _vjump():
-	if vspeed < 0:
-		vspeed *= 0.45
+	if linear_vel.y < 0:
+		linear_vel.y *= 0.45
 func _set_anim(anim):
-	if $Anim.current_animation != anim:
-		$Anim.play(anim)
+	if anim_spr.animation != anim:
+		anim_spr.play(anim)
 func _shoot():
 	if get_tree().get_nodes_in_group("bullet").size() < 4:
 		var inst = bullet.instance()
 		inst.position = position
-		inst.dir = $Sprite.scale.x
+		inst.dir = anim_spr.scale.x
 		get_parent().add_child(inst)
 		$Sounds/Shoot.play()

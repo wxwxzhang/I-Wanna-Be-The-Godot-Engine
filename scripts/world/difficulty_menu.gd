@@ -11,11 +11,14 @@ export(PackedScene) var dif_menu
 onready var sprite_xstart = $Sprites.position.x
 
 func _ready():
+	# Play sprite
+	for spr in $Sprites.get_children():
+		spr.playing = true
 	# Check data directory exists
 	var dir = Directory.new()
 	if !dir.dir_exists(global.DATA_PATH):
 		dir.make_dir(global.DATA_PATH)
-	
+		
 	for i in range(1, 4, 1):
 		exists[i] = true
 		##### Load save file #####

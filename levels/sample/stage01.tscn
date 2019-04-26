@@ -1,9 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://tiles/all_tiles.tres" type="TileSet" id=1]
-[ext_resource path="res://objects/saves/save.tscn" type="PackedScene" id=2]
-[ext_resource path="res://objects/player/player_start.tscn" type="PackedScene" id=3]
-[ext_resource path="res://objects/killers/SpikeUp.tscn" type="PackedScene" id=4]
+[ext_resource path="res://tilesets/all_tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/killers/spike_up.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/saves/save.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/player/player_start.tscn" type="PackedScene" id=4]
+
+
+
+
 
 [node name="Stage01" type="Node2D"]
 __meta__ = {
@@ -18,7 +22,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=[
+"block",
+]]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 collision_use_kinematic = true
@@ -29,12 +35,15 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Save" parent="." instance=ExtResource( 2 )]
+[node name="SpikeUp" parent="TileMap" instance=ExtResource( 2 )]
+position = Vector2( 368, 528 )
+
+[node name="Save" parent="." instance=ExtResource( 3 )]
 position = Vector2( 304, 528 )
 
-[node name="PlayerStart" parent="." instance=ExtResource( 3 )]
+[node name="PlayerStart" parent="." instance=ExtResource( 4 )]
 position = Vector2( 32, 544 )
 
-[node name="SpikeUp" parent="." instance=ExtResource( 4 )]
+[node name="SpikeUp" parent="." instance=ExtResource( 2 )]
 position = Vector2( 400, 496 )
 

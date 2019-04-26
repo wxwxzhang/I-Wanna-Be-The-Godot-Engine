@@ -1,6 +1,7 @@
 extends Area2D
 
 var can_save = true
+onready var anim_spr = $AnimatedSprite
 
 func _physics_process(delta):
 	for i in get_overlapping_bodies():
@@ -10,13 +11,13 @@ func _physics_process(delta):
 func _save():
 	if can_save:
 		can_save = false
-		$Sprite.frame = 1
+		anim_spr.frame = 1
 		$Timer.start()
 		$Timer2.start()
 		global.save_game(true)
 
 func _on_Timer_timeout():
-	$Sprite.frame = 0
+	anim_spr.frame = 0
 
 func _on_Timer2_timeout():
 	can_save = true
