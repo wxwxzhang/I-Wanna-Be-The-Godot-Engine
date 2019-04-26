@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/bullet.tscn" type="PackedScene" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/audio/sfx/jump.wav" type="AudioStream" id=17]
 [ext_resource path="res://assets/audio/sfx/d_jump.wav" type="AudioStream" id=18]
 [ext_resource path="res://assets/audio/sfx/shoot.wav" type="AudioStream" id=19]
+[ext_resource path="res://scripts/player/vine_detection.gd" type="Script" id=20]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -80,3 +81,10 @@ stream = ExtResource( 18 )
 
 [node name="Shoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
+
+[node name="VineDetector" type="Area2D" parent="."]
+script = ExtResource( 20 )
+
+[node name="MaskShape" type="CollisionPolygon2D" parent="VineDetector"]
+position = Vector2( 5, -3 )
+polygon = PoolVector2Array( -10, -9, -10, 12, 1, 12, 1, -9 )

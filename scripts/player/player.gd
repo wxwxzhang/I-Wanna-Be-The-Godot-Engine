@@ -2,21 +2,18 @@ extends KinematicBody2D
 
 const JUMP = 8.5
 const JUMP2 = 7
-
 const GRAVITY = 0.4
-
 const MAX_SPEED = 3
 const MAX_VSPEED = 9
 
 var frozen = false
-
 var linear_vel = Vector2()
 var djump = 1
-
 var on_vine_left = false
 var on_vine_right = false
 
 export(PackedScene) var bullet
+
 onready var anim_spr = $AnimatedSprite
 
 func _ready():
