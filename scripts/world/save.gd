@@ -3,6 +3,11 @@ extends Area2D
 var can_save = true
 onready var anim_spr = $AnimatedSprite
 
+export(int, "Medium", "Hard", "Very Hard") var difficulty
+
+func _ready():
+	if global.difficulty > difficulty:
+		queue_free()
 func _physics_process(delta):
 	for i in get_overlapping_bodies():
 		if (i.is_in_group("player") && Input.is_action_just_pressed("ui_shoot")) || \

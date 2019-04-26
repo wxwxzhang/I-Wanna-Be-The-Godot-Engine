@@ -45,6 +45,14 @@ __meta__ = {
 [node name="Save" parent="." instance=ExtResource( 3 )]
 position = Vector2( 304, 528 )
 
+[node name="Save2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, 464 )
+difficulty = 1
+
+[node name="Save3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 784, 528 )
+difficulty = 2
+
 [node name="PlayerStart" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 544 )
 

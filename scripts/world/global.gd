@@ -120,6 +120,10 @@ func _on_scene_start():
 	# Update window caption
 	OS.set_window_title(room_caption_def)
 func game_restart():
+	# Stop music
+	$AudioStreamPlayer.stop()
+	$AudioStreamPlayer.stream = null
+	# Change scene
 	get_tree().change_scene(ProjectSettings.get_setting("application/run/main_scene"))
 	# Reset property values
 	game_started = false
