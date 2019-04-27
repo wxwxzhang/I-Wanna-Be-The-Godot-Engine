@@ -20,6 +20,7 @@ angle_random = 0.36
 scale = 2.0
 
 [node name="BloodEmitter" type="Particles2D"]
+z_index = 999
 emitting = false
 amount = 5000
 lifetime = 10.0

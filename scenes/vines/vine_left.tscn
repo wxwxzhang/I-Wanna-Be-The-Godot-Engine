@@ -5,6 +5,7 @@
 [node name="VineL" type="Area2D" groups=[
 "vine_left",
 ]]
+z_index = 50
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

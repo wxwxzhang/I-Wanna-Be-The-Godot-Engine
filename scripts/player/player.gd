@@ -40,11 +40,12 @@ func _physics_process(delta):
 	var on_vine_left = false
 	var on_vine_right = false
 	
-	for vine in vine_detector.get_overlapping_areas():
-		if vine.is_in_group("vine_left"):
-			on_vine_left = true
-		if vine.is_in_group("vine_right"):
-			on_vine_right = true
+	if !is_on_floor():
+		for vine in vine_detector.get_overlapping_areas():
+			if vine.is_in_group("vine_left"):
+				on_vine_left = true
+			if vine.is_in_group("vine_right"):
+				on_vine_right = true
 	
 	if h != 0:
 		if !on_vine_left and !on_vine_right:
@@ -104,10 +105,6 @@ func _physics_process(delta):
 	if is_on_floor():
 		linear_vel.y = 0
 		djump = 1
-	##### Check player killer #####
-#	for killer in killer_detector.get_overlapping_areas():
-#		if killer.is_in_group("killer"):
-#			global.kill_player()
 		
 func _jump():
 	if is_on_floor():
@@ -140,5 +137,6 @@ func _shoot():
 
 
 func _on_KillerDetector_area_entered(area):
+	## Kill the player
 	if area.is_in_group("killer"):
 		global.kill_player()

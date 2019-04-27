@@ -1,0 +1,13 @@
+Z-Index order:
+FRONT↑
+    GameOver: 1000
+    BloodEmitter: 999
+    Player: 100
+    PlayerStart: 100
+    Bullet: 100
+    Warp: 60
+    Save: 55
+    Vine: 50
+    Block: 10
+    Spikes: 10
+BEHIND↓

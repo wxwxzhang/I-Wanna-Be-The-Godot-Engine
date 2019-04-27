@@ -6,3 +6,4 @@ func _process(delta):
 		position = Vector2(
 				floor(player.position.x / 800) * 800,
 				floor(player.position.y / 608) * 608)
+	

@@ -5,6 +5,7 @@
 [ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=3]
 
 [node name="PlayerStart" type="Sprite"]
+z_index = 100
 texture = ExtResource( 1 )
 centered = false
 script = ExtResource( 2 )

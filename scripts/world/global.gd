@@ -144,4 +144,6 @@ func kill_player():
 		player.get_parent().add_child(inst)
 		# Destroy player
 		player.queue_free()
+		# Increase death count
+		death += 1
 		
