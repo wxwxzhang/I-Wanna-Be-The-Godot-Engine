@@ -8,10 +8,10 @@
 [ext_resource path="res://assets/sprites/player/kid/idle_3.png" type="Texture" id=6]
 [ext_resource path="res://assets/sprites/player/kid/jump_0.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/player/kid/jump_1.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/player/kid/fall_0.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/player/kid/fall_1.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/player/kid/sliding_0.png" type="Texture" id=11]
-[ext_resource path="res://assets/sprites/player/kid/sliding_1.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/player/kid/sliding_0.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/player/kid/sliding_1.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/player/kid/fall_0.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/player/kid/fall_1.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/player/kid/running_0.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/player/kid/running_1.png" type="Texture" id=14]
 [ext_resource path="res://assets/sprites/player/kid/running_2.png" type="Texture" id=15]
@@ -35,12 +35,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "fall",
+"name": "sliding",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "sliding",
+"name": "fall",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
@@ -55,6 +55,13 @@ animations = [ {
 z_index = 100
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
+anim_sprite = NodePath("AnimatedSprite")
+vine_detector = NodePath("VineDetector")
+killer_detector = NodePath("KillerDetector")
+snd_jump = NodePath("Jump")
+snd_double_jump = NodePath("DJump")
+snd_shoot = NodePath("Shoot")
+snd_wall_jump = NodePath("WallJump")
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -97,14 +104,4 @@ visible = false
 [node name="MaskShape" type="CollisionPolygon2D" parent="KillerDetector"]
 position = Vector2( 5, -3 )
 polygon = PoolVector2Array( -10, -9, -10, 12, 1, 12, 1, -9 )
-
-[node name="PlatformDetector" type="Area2D" parent="." groups=[
-"platform_detector",
-]]
-visible = false
-
-[node name="MaskShape" type="CollisionPolygon2D" parent="PlatformDetector"]
-position = Vector2( 5, -3 )
-polygon = PoolVector2Array( -10, 12, -10, 13, 1, 13, 1, 12 )
 [connection signal="area_entered" from="KillerDetector" to="." method="_on_KillerDetector_area_entered"]
-[connection signal="area_entered" from="PlatformDetector" to="." method="_on_KillerDetector_area_entered"]

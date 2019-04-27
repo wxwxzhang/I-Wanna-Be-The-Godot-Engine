@@ -6,19 +6,21 @@ const GRAVITY = 0.4
 const MAX_SPEED = 3
 const MAX_VSPEED = 9
 
-var frozen = false
 var linear_vel = Vector2()
+var frozen = false
 var djump = 1
 var on_vine_left = false
 var on_vine_right = false
 var on_platform = false
 
 export(PackedScene) var bullet
-
-onready var anim_spr = $AnimatedSprite
-onready var vine_detector = $VineDetector
-onready var killer_detector = $KillerDetector
-onready var platform_detector = $PlatformDetector
+export(NodePath) var anim_sprite
+export(NodePath) var vine_detector
+export(NodePath) var killer_detector
+export(NodePath) var snd_jump
+export(NodePath) var snd_double_jump
+export(NodePath) var snd_shoot
+export(NodePath) var snd_wall_jump
 
 func _ready():
 	if global.player_reset_position:
@@ -43,7 +45,7 @@ func _physics_process(delta):
 	var on_vine_right = false
 	
 	if !is_on_floor():
-		for vine in vine_detector.get_overlapping_areas():
+		for vine in get_node(vine_detector).get_overlapping_areas():
 			if vine.is_in_group("vine_left"):
 				on_vine_left = true
 			if vine.is_in_group("vine_right"):
@@ -51,31 +53,29 @@ func _physics_process(delta):
 	
 	if h != 0:
 		if !on_vine_left and !on_vine_right:
-			anim_spr.scale.x = h
+			get_node(anim_sprite).scale.x = h
 		if (h == -1 and !on_vine_right) or (h == 1 and !on_vine_left):
 			linear_vel.x = MAX_SPEED * h
 			_set_anim("running")
 	else:
 		linear_vel.x = 0
 		_set_anim("idle")
-	
-	if !on_platform:
+	if get_floor_velocity() == Vector2():
 		if linear_vel.y < -0.05:
 			_set_anim("jump")
 		elif linear_vel.y > 0.05:
 			_set_anim("fall")
 	else:
-		
-		pass
+		_set_anim("idle")
 	
 	if abs(linear_vel.y) > MAX_VSPEED:
 		linear_vel.y = sign(linear_vel.y) * MAX_VSPEED
 	
 	if on_vine_left or on_vine_right:
 		if on_vine_right:
-			anim_spr.scale.x = -1
+			get_node(anim_sprite).scale.x = -1
 		else:
-			anim_spr.scale.x = 1
+			get_node(anim_sprite).scale.x = 1
 		linear_vel.y = 2
 		_set_anim("sliding")
 		
@@ -88,7 +88,7 @@ func _physics_process(delta):
 					linear_vel.x = 15
 				
 				linear_vel.y = -9
-				$WallJump.play()
+				get_node(snd_wall_jump).play()
 				_set_anim("jump")
 			else:
 				if on_vine_right:
@@ -104,12 +104,8 @@ func _physics_process(delta):
 			_vjump()
 			
 	linear_vel.y += GRAVITY 
-	
-	for platform in platform_detector.get_overlapping_bodies():
-		if platform.is_in_group("platform"):
-			linear_vel.x += platform.velocity.x
 			
-	move_and_slide(linear_vel * 50, Vector2(0, -1))
+	move_and_slide(linear_vel * 50, Vector2(0, -1)) / 50
 	
 	if is_on_ceiling():
 		linear_vel.y = 0
@@ -121,30 +117,30 @@ func _jump():
 	if is_on_floor():
 		linear_vel.y = -JUMP
 		djump = 1
-		$Jump.play()
+		get_node(snd_jump).play()
 	elif djump == 1:
 		linear_vel.y = -JUMP2
 		djump = 0
-		$DJump.play()
+		get_node(snd_double_jump).play()
 func _vjump():
 	if linear_vel.y < 0:
 		linear_vel.y *= 0.45
 func _set_anim(anim):
-	if anim_spr.animation != anim:
+	if get_node(anim_sprite).animation != anim:
 		match anim:
 			"fall", "idle", "jump", "running":
-				anim_spr.offset = Vector2(-17, -23)
+				get_node(anim_sprite).offset = Vector2(-17, -23)
 			"sliding":
-				anim_spr.offset = Vector2(-8, -10)
-		anim_spr.play(anim)
+				get_node(anim_sprite).offset = Vector2(-8, -10)
+		get_node(anim_sprite).play(anim)
 func _shoot():
 	if get_tree().get_nodes_in_group("bullet").size() < 4:
 		var inst = bullet.instance()
 		add_collision_exception_with(inst)
 		inst.position = position
-		inst.dir = anim_spr.scale.x
+		inst.dir = get_node(anim_sprite).scale.x
 		get_parent().add_child(inst)
-		$Shoot.play()
+		get_node(snd_shoot).play()
 
 
 func _on_KillerDetector_area_entered(area):

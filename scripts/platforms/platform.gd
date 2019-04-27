@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends KinematicBody2D
 
 func _ready():
 	$Sprite.visible = false
