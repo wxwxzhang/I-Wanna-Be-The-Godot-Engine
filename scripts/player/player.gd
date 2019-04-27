@@ -18,6 +18,7 @@ export(PackedScene) var bullet
 onready var anim_spr = $AnimatedSprite
 onready var vine_detector = $VineDetector
 onready var killer_detector = $KillerDetector
+onready var platform_detector = $PlatformDetector
 
 func _ready():
 	if global.player_reset_position:
@@ -103,6 +104,11 @@ func _physics_process(delta):
 			_vjump()
 			
 	linear_vel.y += GRAVITY 
+	
+	for platform in platform_detector.get_overlapping_bodies():
+		if platform.is_in_group("platform"):
+			linear_vel.x += platform.velocity.x
+			
 	move_and_slide(linear_vel * 50, Vector2(0, -1))
 	
 	if is_on_ceiling():
