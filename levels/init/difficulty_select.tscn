@@ -15,7 +15,9 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=[
+"block",
+]]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1

@@ -15,6 +15,8 @@ var on_vine_right = false
 export(PackedScene) var bullet
 
 onready var anim_spr = $AnimatedSprite
+onready var vine_detector = $VineDetector
+onready var killer_detector = $KillerDetector
 
 func _ready():
 	if global.player_reset_position:
@@ -34,6 +36,15 @@ func _physics_process(delta):
 			h = 1
 		elif L:
 			h = -1
+	## Vine detection
+	var on_vine_left = false
+	var on_vine_right = false
+	
+	for vine in vine_detector.get_overlapping_areas():
+		if vine.is_in_group("vine_left"):
+			on_vine_left = true
+		if vine.is_in_group("vine_right"):
+			on_vine_right = true
 	
 	if h != 0:
 		if !on_vine_left and !on_vine_right:
@@ -57,7 +68,7 @@ func _physics_process(delta):
 		if on_vine_right:
 			anim_spr.scale.x = -1
 		else:
-			anim_spr.scale_x = 1
+			anim_spr.scale.x = 1
 		linear_vel.y = 2
 		_set_anim("sliding")
 		
@@ -70,6 +81,7 @@ func _physics_process(delta):
 					linear_vel.x = 15
 				
 				linear_vel.y = -9
+				$WallJump.play()
 				_set_anim("jump")
 			else:
 				if on_vine_right:
@@ -93,9 +105,9 @@ func _physics_process(delta):
 		linear_vel.y = 0
 		djump = 1
 	##### Check player killer #####
-	if _check("killer"):
-		# Kill the player
-		global.kill_player()
+#	for killer in killer_detector.get_overlapping_areas():
+#		if killer.is_in_group("killer"):
+#			global.kill_player()
 		
 func _jump():
 	if is_on_floor():
@@ -111,16 +123,22 @@ func _vjump():
 		linear_vel.y *= 0.45
 func _set_anim(anim):
 	if anim_spr.animation != anim:
+		match anim:
+			"fall", "idle", "jump", "running":
+				anim_spr.offset = Vector2(-17, -23)
+			"sliding":
+				anim_spr.offset = Vector2(-8, -10)
 		anim_spr.play(anim)
 func _shoot():
 	if get_tree().get_nodes_in_group("bullet").size() < 4:
 		var inst = bullet.instance()
+		add_collision_exception_with(inst)
 		inst.position = position
 		inst.dir = anim_spr.scale.x
 		get_parent().add_child(inst)
 		$Shoot.play()
-func _check(group):
-	for i in get_slide_count():
-		if get_slide_collision(i).get_collider().is_in_group(group):
-			return true
-	return false
+
+
+func _on_KillerDetector_area_entered(area):
+	if area.is_in_group("killer"):
+		global.kill_player()
