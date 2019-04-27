@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/tilemaps/block.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/world/camera.tscn" type="PackedScene" id=2]
@@ -8,6 +8,24 @@
 [ext_resource path="res://scenes/killers/spike_down.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/player/player_start.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/saves/save.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/platforms/platform.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "anim"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1008, 456 ), Vector2( 1200, 456 ), Vector2( 1008, 456 ) ]
+}
 
 [node name="Stage01" type="Node2D"]
 
@@ -163,3 +181,24 @@ position = Vector2( 896, 160 )
 [node name="Save" parent="." instance=ExtResource( 8 )]
 position = Vector2( 848, 176 )
 difficulty = 1
+
+[node name="Platform" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platform" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 912, 200 )
+
+[node name="Platform2" parent="Platform" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 880, 200 )
+
+[node name="Platform3" parent="Platform" instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 848, 200 )
+
+[node name="MovingPlatform" parent="Platform" instance=ExtResource( 9 )]
+position = Vector2( 1105.82, 456 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform/MovingPlatform"]
+autoplay = "anim"
+anims/anim = SubResource( 1 )

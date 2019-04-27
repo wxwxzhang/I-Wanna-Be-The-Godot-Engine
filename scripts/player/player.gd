@@ -11,6 +11,7 @@ var linear_vel = Vector2()
 var djump = 1
 var on_vine_left = false
 var on_vine_right = false
+var on_platform = false
 
 export(PackedScene) var bullet
 
@@ -57,10 +58,14 @@ func _physics_process(delta):
 		linear_vel.x = 0
 		_set_anim("idle")
 	
-	if linear_vel.y < -0.05:
-		_set_anim("jump")
-	elif linear_vel.y > 0.05:
-		_set_anim("fall")
+	if !on_platform:
+		if linear_vel.y < -0.05:
+			_set_anim("jump")
+		elif linear_vel.y > 0.05:
+			_set_anim("fall")
+	else:
+		
+		pass
 	
 	if abs(linear_vel.y) > MAX_VSPEED:
 		linear_vel.y = sign(linear_vel.y) * MAX_VSPEED

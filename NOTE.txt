@@ -8,6 +8,7 @@ FRONT↑
     Warp: 60
     Save: 55
     Vine: 50
+    Platform: 25
     Block: 10
     Spikes: 10
 BEHIND↓
